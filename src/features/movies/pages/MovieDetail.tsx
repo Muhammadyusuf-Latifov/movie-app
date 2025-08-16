@@ -25,12 +25,12 @@ const MovieDetail = () => {
         {isLoading && <p>loading...</p>}
 
         <section className="bg-[#000] pb-[200px]">
-          <div className="container">
+          <div className="container ">
             <div
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
               }}
-              className="bg-center  relative bg-cover h-[640px] border-[1.5px] rounded-[12px]  border-[#484848]"
+              className="bg-center overflow-hidden relative bg-cover h-[640px] border-[1.5px] rounded-[12px]  border-[#484848]"
             >
               <div className="absolute w-full h-[100%] z-2 bg-[#0000006b]"></div>
               <div className="relative z-10 w-full h-[100%] mt-[170px] flex items-center justify-center">
@@ -125,14 +125,11 @@ const MovieDetail = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-[white] grid grid-cols-3 gap-[10px] p-[20px] mt-[100px]">
+            <div className="bg-[#ddd] grid grid-cols-3 gap-[10px] p-[20px] mt-[100px]">
               {data?.production_companies.map((rasm: Rasm) => (
-                <div
-                  className=" p-[10px]  border-[1.5px] border-[#ddd]"
-                  key={rasm?.id}
-                >
+                <div className="  " key={rasm?.id}>
                   <img
-                    className="block w-[100%] h-[250px] "
+                    className="block w-[100%] h-[250px] border-[1.5px] border-[#bab9b9] p-[20px]"
                     src={
                       rasm?.logo_path
                         ? `https://image.tmdb.org/t/p/original${rasm?.logo_path}`
@@ -140,6 +137,7 @@ const MovieDetail = () => {
                     }
                     alt=""
                   />
+                  <h2 className="text-center text-[#787777] text-[20px]">{rasm?.name}</h2>
                 </div>
               ))}
             </div>

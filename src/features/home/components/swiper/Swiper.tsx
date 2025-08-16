@@ -33,11 +33,11 @@ const SwiperHome: FC<Props> = ({ data }) => {
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/original${item.backdrop_path})`,
                 }}
-                className="bg-center relative bg-cover h-[640px] border-[1.5px] rounded-[12px]  border-[#484848]"
+                className="bg-center relative overflow-hidden bg-cover h-[640px] border-[1.5px] rounded-[12px]  border-[#484848]"
               >
                 <div className="absolute w-[100%] h-[100%] bg-[#00000061]"></div>
                 <div className="w-[100%] h-[100%] flex items-center justify-center">
-                  <div className="w-[40%] z-10 mt-[280px]">
+                  <div className="w-[40%] z-10 mt-[280px] max-[600px]:w-[100%]">
                     <h3 className="text-[white] text-center text-[40px]">
                       {item.title}
                     </h3>

@@ -42,15 +42,18 @@
   margin-bottom: 16px;
   cursor: pointer;
 }
-.link li:hover {
-  text-decoration: underline;
+.link li span {
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
-.footerBtn {
-  max-width: 150px;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  width: 100%;
-  background: #000;
-  color: #fff;
-  border-radius: 12px;
+.link li span:hover {
+  text-decoration: underline;
+  color: rgb(197, 1, 1);
+}
+
+.footWrap {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr;
 }

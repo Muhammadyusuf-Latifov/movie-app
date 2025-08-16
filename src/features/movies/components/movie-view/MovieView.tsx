@@ -36,7 +36,7 @@ const MovieView: FC<Props> = ({ data }) => {
           pagination={{ clickable: true }}
           navigation={true}
           breakpoints={{
-            550: { slidesPerView: 2, spaceBetween: 12 },
+            420: { slidesPerView: 2, spaceBetween: 12 },
             640: { slidesPerView: 2, spaceBetween: 20 },
             768: { slidesPerView: 3, spaceBetween: 20 },
             1024: { slidesPerView: 4, spaceBetween: 20 },
