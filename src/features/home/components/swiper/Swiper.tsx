@@ -38,7 +38,9 @@ const SwiperHome: FC<Props> = ({ data }) => {
                 <div className="absolute w-[100%] h-[100%] bg-[#00000061]"></div>
                 <div className="w-[100%] h-[100%] flex items-center justify-center">
                   <div className="w-[40%] z-10 mt-[280px]">
-                    <h3 className="text-[white] text-center text-[32px]">{item.title}</h3>
+                    <h3 className="text-[white] text-center text-[40px]">
+                      {item.title}
+                    </h3>
                     <div className="flex items-center justify-center gap-[12px]">
                       <p className="text-[white]">{item.vote_average}</p>
                       <p className="text-[white]">|</p>
