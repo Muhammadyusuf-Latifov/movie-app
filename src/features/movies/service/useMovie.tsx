@@ -6,7 +6,7 @@ interface iProps {
 export const useMovie = () => {
   const getMovies = (params?: iProps) =>
     useQuery({
-      queryKey: ["movie-key", params],
+      queryKey: ["movie-key", params?.page],
       queryFn: () =>
         api
           .get("/discover/movie", {
@@ -16,13 +16,18 @@ export const useMovie = () => {
     });
   const getMovieById = (id: number) =>
     useQuery({
-      queryKey: ["movie-key", ],
+      queryKey: ["movie-id", id],
       queryFn: () => api.get(`movie/${id}`).then((res) => res.data),
+    });
+  const getMOvieEndpoint = (id: number, path: string) =>
+    useQuery({
+      queryKey: ["movie-endpoint", id, path],
+      queryFn: () => api.get(`movie/${id}/${path}`).then((res) => res.data),
     });
 
   const createMovie = useMutation({
     mutationFn: (data: any) => api.post("/discover/movie", data),
   });
 
-  return { getMovies, createMovie, getMovieById };
+  return { getMovies, createMovie, getMovieById, getMOvieEndpoint };
 };

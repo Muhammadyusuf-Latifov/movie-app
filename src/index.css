@@ -27,7 +27,7 @@
 }
 .swiper-button-prev:hover {
   background: #dddddd87;
-  padding: 20px;
+  
 }
 
 .swiper-button-next::after,
@@ -36,6 +36,24 @@
 }
 .swiper-pagination-bullet {
   display: none !important;
+}
+@media (max-width: 700px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 25px !important;
+    height: 25px !important;
+    color: #fff !important;
+    padding: 14px;
+    transition: 0.3s;
+
+    border-radius: 50%;
+    background: #dddddd35;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 18px !important;
+  }
 }
 
 .link li {
@@ -56,4 +74,42 @@
 .footWrap {
   display: grid;
   grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr;
+}
+
+.skaletion_animation {
+  background: linear-gradient(90deg, #868686, #6d6c6c, #868686);
+  background-size: 200%;
+  animation: animation 1s linear infinite;
+}
+@keyframes animation {
+  to {
+    background-position: 200%;
+  }
+}
+@media (max-width: 1150px) {
+  .footWrap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 850px) {
+  .footWrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .part {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 475px) {
+  .footWrap {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .part {
+    margin-bottom: 30px;
+  }
+}
+.outlet.active {
+  background: #fff;
 }

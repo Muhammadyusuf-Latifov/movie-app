@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import rasm from "../../shared/assets/logo.svg";
 import movie from "../../shared/assets/movie.svg";
 
-import { Clapperboard, Search, Tickets, NotebookTabs } from "lucide-react";
+import { Clapperboard, Search,  Bookmark, House } from "lucide-react";
 
 const Header = () => {
   return (
@@ -17,32 +17,32 @@ const Header = () => {
             </div>
           </NavLink>
         </div>
-        <ul className="flex items-center gap-[20px]">
+        <ul className="flex items-center gap-[20px] max-[700px]:hidden">
+          <li>
+            <NavLink
+              className="navlink text-[#A1A1A1] duration-300 hover:text-[red] flex flex-col items-center"
+              to={"/"}
+            >
+              <House className="text-[14px] " />
+              <p className="text-center text-[12px]">Home</p>
+            </NavLink>
+          </li>
           <li>
             <NavLink
               className="navlink text-[#A1A1A1] duration-300 hover:text-[red] flex flex-col items-center"
               to={"/movies"}
             >
               <Clapperboard className="text-[14px] " />
-              <p className="text-center text-[12px]">Movie</p>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className="navlink text-[#A1A1A1] duration-300 hover:text-[red] flex flex-col items-center"
-              to={"/sessions"}
-            >
-              <NotebookTabs className="text-[14px] " />
-              <p className="text-center text-[12px]">Sessions</p>
+              <p className="text-center text-[12px]">Movies</p>
             </NavLink>
           </li>
           <li>
             <NavLink
               className="text-[#A1A1A1] navlink duration-300 hover:text-[red] flex flex-col items-center"
-              to={"/tickets"}
+              to={"/bookmark"}
             >
-              <Tickets className="text-[14px] " />
-              <p className="text-center text-[12px]">Tickets</p>
+              <Bookmark className="text-[14px] " />
+              <p className="text-center text-[12px]">Bookmark</p>
             </NavLink>
           </li>
           <li>
@@ -56,13 +56,12 @@ const Header = () => {
           </li>
         </ul>
         <div>
-          <button className="text-white bg-[red] px-[60px] duration-300 py-[16px] rounded-[12px] hover:bg-[#ca0505]">
+          <button className="text-white bg-[red] px-[60px] duration-300 py-[16px] rounded-[12px] hover:bg-[#ca0505] max-[560px]:py-[10px] max-[560px]:px-[40px]">
             Login
           </button>
         </div>
       </nav>
     </header>
-    
   );
 };
 

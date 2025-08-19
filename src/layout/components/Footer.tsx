@@ -18,9 +18,9 @@ const Footer = () => {
     <footer className="bg-[#000] pb-[30px]">
       <div className="container ">
         <div className="footWrap px-[20px]   bg-[#111111]  py-[30px] rounded-[12px]">
-          <div>
+          <div className="part ">
             <img src={logo} alt="" />
-            <div className=" mt-[45px]">
+            <div className=" mt-[45px] max-[475]:mt-[20px]">
               <img src={googlePlay} alt="" />
             </div>
             <div className="mt-[8px]">
@@ -28,7 +28,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
+          <div className="part">
             <p className="text-[#fff] mb-[20px]">About Us</p>
             <ul className="link text-[#fff]">
               <li className="text-[#A1A1A1]">
@@ -96,7 +96,7 @@ const Footer = () => {
                 +998 (95) 897-33-38
               </li>
             </ul>
-            <p className="text-[#fff] mb-[20px] mt-[45px]">Social Media</p>
+            <p className="text-[#fff] mb-[20px] mt-[45px] max-[475px]:mt-[20px]">Social Media</p>
             <div className="flex items-center gap-[20px]">
               <Instagram className="text-[red]" />
               <Facebook className="text-[red]" />

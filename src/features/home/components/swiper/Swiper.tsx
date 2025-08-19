@@ -16,7 +16,7 @@ const SwiperHome: FC<Props> = ({ data }) => {
 
   return (
     <section className="bg-[#000] pb-[50px] ">
-      <div className="max-w-[1360px] w-[100%] mx-auto ">
+      <div className=" max-w-[1360px] w-[100%] mx-auto ">
         <Swiper
           loop={true}
           autoplay={{
@@ -28,12 +28,12 @@ const SwiperHome: FC<Props> = ({ data }) => {
           className="mySwiper"
         >
           {data?.map((item: any) => (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide key={item.id} className="">
               <div
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/original${item.backdrop_path})`,
                 }}
-                className="bg-center relative overflow-hidden bg-cover h-[640px] border-[1.5px] rounded-[12px]  border-[#484848]"
+                className="bg-center relative overflow-hidden bg-cover h-[640px] border-[1.5px]  rounded-[12px]  border-[#484848]"
               >
                 <div className="absolute w-[100%] h-[100%] bg-[#00000061]"></div>
                 <div className="w-[100%] h-[100%] flex items-center justify-center">

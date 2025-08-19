@@ -1,8 +1,14 @@
-import { memo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useMovie } from "../service/useMovie";
+import { memo, useLayoutEffect } from "react";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
+import { useMovie } from "../../service/useMovie";
 import { Tickets } from "lucide-react";
-import img from "../../../shared/assets/Image_not_available.png";
+import img from "../../../../shared/assets/Image_not_available.png";
+import HeadSkaleton from "../../components/headSkaleton/HeadSkaleton";
+import { ChevronLeft } from "lucide-react";
+import MovieView from "../../components/movie-view/MovieView";
+import MovieSkaleton from "../../components/movie-view/MovieSkaleton";
+import MovieHeader from "../../components/movieHeader/MovieHeader";
+
 interface Rasm {
   id: number;
   logo_path: string | null;
@@ -13,18 +19,24 @@ const MovieDetail = () => {
   const { id } = useParams();
   const toNumber = Number(id);
   const navigate = useNavigate();
-  const { getMovieById } = useMovie();
-  const { data, isLoading, isError } = getMovieById(toNumber);
-  console.log(data);
 
-  if (isError) {
-    return <p>xato</p>;
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [toNumber]);
+
+  const { getMovieById, getMOvieEndpoint } = useMovie();
+  const { data, isFetching } = getMovieById(toNumber);
+  const { data: similarMovie, isFetching: fetching } = getMOvieEndpoint(
+    toNumber,
+    "similar"
+  );
+
+  if (isFetching) {
+    return <HeadSkaleton />;
   } else {
     return (
       <>
-        {isLoading && <p>loading...</p>}
-
-        <section className="bg-[#000] pb-[200px]">
+        <section className="bg-[#000] pb-[100px]">
           <div className="container ">
             <div
               style={{
@@ -32,7 +44,14 @@ const MovieDetail = () => {
               }}
               className="bg-center overflow-hidden relative bg-cover h-[640px] border-[1.5px] rounded-[12px]  border-[#484848]"
             >
-              <div className="absolute w-full h-[100%] z-2 bg-[#0000006b]"></div>
+              <button
+                onClick={() => navigate(-1)}
+                className="absolute z-20 top-[15px] px-[20px] py-[10px]  rounded-[12px]  left-[20px] flex items-center justify-center duration-200 bg-[#eaeaea] text-[red] font-medium hover:bg-[#ddd]"
+              >
+                <ChevronLeft className="text-[red]" />
+                Back
+              </button>
+              <div className="absolute w-full h-[100%] z-2 bg-[#0000007c]"></div>
               <div className="relative z-10 w-full h-[100%] mt-[170px] flex items-center justify-center">
                 <div className=" ">
                   <h3 className="text-[#fff] text-[44px] text-center ">
@@ -43,11 +62,11 @@ const MovieDetail = () => {
                       {data?.release_date.split("").slice(0, 4).join("")}
                     </p>
                     <p className="text-[white]">|</p>
-                    <p className="text-[#fff]">
-                      {data?.genres[1]
-                        ? data?.genres[1].name
-                        : data?.genres[0].name}
-                    </p>
+                    {data?.genres?.length === 0 ? (
+                      <></>
+                    ) : (
+                      <p className="text-[#fff]">{data?.genres[0].name}</p>
+                    )}
 
                     <p className="text-[white]">|</p>
                     <p className="text-[white]">{data?.vote_average} </p>
@@ -68,7 +87,6 @@ const MovieDetail = () => {
                 </div>
               </div>
             </div>
-
             <div className="max-w-[50%] mx-auto max-[820px]:max-w-[80%] max-[600px]:max-w-[100%] ">
               <h3 className="text-center text-white text-[32px] mt-[50px] mb-[40px]">
                 Details
@@ -83,9 +101,13 @@ const MovieDetail = () => {
               </div>
               <div className="flex items-center justify-between">
                 <h3 className="text-[#959595]">Production</h3>
-                <p className="text-[#f0f0f0]">
-                  {data?.production_countries[0].name}
-                </p>
+                {data?.production_countries.length === 0 ? (
+                  <></>
+                ) : (
+                  <p className="text-[#f0f0f0]">
+                    {data?.production_countries[0].name}
+                  </p>
+                )}
               </div>
               <div className="flex items-center justify-between">
                 <h3 className="text-[#959595]">Genre</h3>
@@ -99,7 +121,7 @@ const MovieDetail = () => {
               </div>
               <hr className=" mt-[20px] h-[2px] mb-[20px]  bg-[#969595]" />
               <div className="flex flex-col">
-                <div className="flex items-center justify-between mb-[30px]">
+                <div className="flex items-center justify-between flex-wrap mb-[30px]">
                   <h3 className="text-[#959595]">Tagline</h3>
                   <p className="text-[#f0f0f0]"> {data?.tagline}</p>
                 </div>
@@ -107,40 +129,59 @@ const MovieDetail = () => {
                 <h3 className="text-[#959595]  text-nowrap mb-[10px]">
                   Production companies
                 </h3>
-                <div className="flex items-center justify-between  gap-x-[12px] mb-[45px]">
+                <div className="flex items-center justify-between flex-wrap   gap-x-[18px] mb-[45px]">
                   {data?.production_companies?.map((movie: any) => (
                     <p
                       className="text-[#f0f0f0] hover:underline cursor-pointer"
                       key={movie.id}
                     >
-                      {movie?.name}
+                      {movie?.name} ,
                     </p>
                   ))}
                 </div>
                 <h3 className="text-[#959595]  text-nowrap mb-[10px]">
-                  Production companies
+                  Overview
                 </h3>
                 <div className="">
                   <p className="text-[#f0f0f0]">{data?.overview}</p>
                 </div>
               </div>
             </div>
-            <div className="bg-[#ddd] grid grid-cols-3 gap-[10px] p-[20px] mt-[100px]">
-              {data?.production_companies.map((rasm: Rasm) => (
-                <div className="  " key={rasm?.id}>
-                  <img
-                    className="block w-[100%] h-[250px] border-[1.5px] border-[#bab9b9] p-[20px]"
-                    src={
-                      rasm?.logo_path
-                        ? `https://image.tmdb.org/t/p/original${rasm?.logo_path}`
-                        : img
-                    }
-                    alt=""
-                  />
-                  <h2 className="text-center text-[#787777] text-[20px]">{rasm?.name}</h2>
-                </div>
-              ))}
-            </div>
+            <section className=" mt-[100px] mb-[150px]">
+              <MovieHeader />
+              <Outlet />
+            </section>
+            <h2 className="text-center text-[#fff] text-[30px]">Companies</h2>
+            {data?.production_companies?.length === 0 ? (
+              <></>
+            ) : (
+              <div className="bg-[#ddd] grid grid-cols-4 gap-[10px] p-[20px] mt-[30px] rounded-[12px]">
+                {data?.production_companies.map((rasm: Rasm) => (
+                  <div key={rasm?.id}>
+                    <img
+                      className="block w-[100%] h-[150px] border-[1.5px] rounded-[12px] border-[#bab9b9] p-[20px]"
+                      src={
+                        rasm?.logo_path
+                          ? `https://image.tmdb.org/t/p/original${rasm?.logo_path}`
+                          : img
+                      }
+                      alt=""
+                    />
+                    <h2 className="text-center text-[#787777] text-[20px] mt-[12px] mb-[10px]">
+                      {rasm?.name}
+                    </h2>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {fetching ? (
+              <div className="mt-[150px]">
+                <MovieSkaleton />
+              </div>
+            ) : (
+              <MovieView data={similarMovie?.results} title={"Similar"} />
+            )}
           </div>
         </section>
       </>

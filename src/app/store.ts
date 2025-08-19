@@ -1,10 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit";
+import bookmark from "./redux/useBookmark";
 
 export const store = configureStore({
   reducer: {
-    fake: ()=> "hello"
+   bookmark,
   },
-})
+});
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
