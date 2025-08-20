@@ -10,7 +10,7 @@ const Bookmark = () => {
   console.log(user);
   if (user?.length == 0) {
     return (
-      <section className="bg-[#000] min-h-[400px] w-full">
+      <section className="bg-[#000] min-h-[700px] w-full">
         <div className="container flex flex-col items-center justify-center pt-[130px]">
           <GoBookmarkSlash className="text-[#858585] text-[80px] mb-[20px]" />
           <p className="text-[#8b8b8b] text-[20px]">Your bookmark list is empty</p>
