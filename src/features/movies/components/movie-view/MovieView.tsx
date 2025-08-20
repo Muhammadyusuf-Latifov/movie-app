@@ -53,7 +53,7 @@ const MovieView: FC<Props> = ({ data, title }) => {
                 {movie?.poster_path ? (
                   <div
                     onClick={() => navigate(`/movie/${movie.id}`)}
-                    className="h-[430px] overflow-hidden border rounded-[12px] border-[#5e5e5e] max-[1000px]:h-[400px]  max-[700px]:h-[380px]  max-[600px]:h-[320px]"
+                    className="h-[430px] overflow-hidden border rounded-[12px]  max-[1000px]:h-[400px]  max-[700px]:h-[380px]  max-[600px]:h-[320px]"
                   >
                     <img
                       className=" h-[100%] w-[100%] "

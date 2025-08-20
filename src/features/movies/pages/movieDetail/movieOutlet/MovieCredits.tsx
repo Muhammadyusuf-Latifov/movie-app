@@ -2,7 +2,8 @@ import { memo } from "react";
 import { useMovie } from "../../../service/useMovie";
 import { useNavigate, useParams } from "react-router-dom";
 import user from "../../../../../shared/assets/user.jpg";
-import { Commet } from "react-loading-indicators";
+import { ThreeDot } from "react-loading-indicators";
+
 
 interface iProps {
   id: number;
@@ -17,19 +18,12 @@ const MovieCredits = () => {
   const { getMOvieEndpoint } = useMovie();
   const { data, isFetching } = getMOvieEndpoint(num, "credits");
   const cast = data?.cast?.slice(0, 12);
-  console.log(cast);
 
   if (isFetching) {
     return (
-      <section className="flex items-center justify-center mt-[130px]">
+      <section className="flex min-h-[400px] items-center justify-center ">
         <div className="">
-          <Commet
-            color="#ffffff"
-            size="large"
-            text="loading"
-            textColor="#ffffff"
-          />
-          ;
+          <ThreeDot color="#fff" size="medium" text="" textColor="" />;
         </div>
       </section>
     );
@@ -80,6 +74,7 @@ const MovieCredits = () => {
             ))}
           </div>
         </div>
+      
       </section>
     );
   }

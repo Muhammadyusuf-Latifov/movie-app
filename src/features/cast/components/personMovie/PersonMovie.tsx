@@ -9,7 +9,7 @@ const PersonMovie = () => {
   const { getPersonEndpoint } = useCast();
   const { data, isFetching } = getPersonEndpoint(Number(id), "movie_credits");
   const kino = data?.cast.slice(0, 8);
-  console.log(kino);
+  
 
   if (isFetching) {
     return (

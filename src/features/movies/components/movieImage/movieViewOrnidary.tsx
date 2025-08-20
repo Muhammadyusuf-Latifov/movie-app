@@ -25,7 +25,7 @@ const MovieViewOrnidary: FC<Props> = ({ data, title }) => {
             <div key={movie?.id} className="mb-[20px]">
               <div onClick={() => navigate(`/movie/${movie.id}`)}>
                 <img
-                  className="border border-[#dddddd28] min-h-[200px] rounded-[12px]"
+                  className="  min-h-[200px] rounded-[12px]"
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                   alt=""
                 />

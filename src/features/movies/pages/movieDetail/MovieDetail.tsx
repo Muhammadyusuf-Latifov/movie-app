@@ -1,13 +1,14 @@
 import { memo, useLayoutEffect } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useMovie } from "../../service/useMovie";
-import { Tickets } from "lucide-react";
+import { Tickets, ChevronLeft, Frown } from "lucide-react";
 import img from "../../../../shared/assets/Image_not_available.png";
 import HeadSkaleton from "../../components/headSkaleton/HeadSkaleton";
-import { ChevronLeft } from "lucide-react";
+
 import MovieView from "../../components/movie-view/MovieView";
 import MovieSkaleton from "../../components/movie-view/MovieSkaleton";
 import MovieHeader from "../../components/movieHeader/MovieHeader";
+
 
 interface Rasm {
   id: number;
@@ -42,7 +43,7 @@ const MovieDetail = () => {
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
               }}
-              className="bg-center overflow-hidden relative bg-cover h-[640px] border-[1.5px] rounded-[12px]  border-[#484848]"
+              className="bg-center overflow-hidden relative bg-cover h-[640px] border-[1.5px] rounded-[12px]  "
             >
               <button
                 onClick={() => navigate(-1)}
@@ -153,13 +154,20 @@ const MovieDetail = () => {
             </section>
             <h2 className="text-center text-[#fff] text-[30px]">Companies</h2>
             {data?.production_companies?.length === 0 ? (
-              <></>
+              <section className="min-h-[250px] flex item justify-center">
+                <div className="pt-[40px]">
+                  <Frown className="text-[#686868] w-[100px] mx-auto mb-[20px] h-[100px]" />
+                  <p className="text-[#686868] text-[18px]">
+                    Company is not available
+                  </p>
+                </div>
+              </section>
             ) : (
               <div className="bg-[#ddd] grid grid-cols-4 gap-[10px] p-[20px] mt-[30px] rounded-[12px]">
                 {data?.production_companies.map((rasm: Rasm) => (
-                  <div key={rasm?.id}>
+                  <div className="cursor-pointer" onClick={() => navigate(`/company/${rasm?.id}`)} key={rasm?.id}>
                     <img
-                      className="block w-[100%] h-[150px] border-[1.5px] rounded-[12px] border-[#bab9b9] p-[20px]"
+                      className="block w-[100%] duration-200 h-[150px] border-[1.5px] hover:shadow-lg rounded-[12px] border-[#bab9b9] p-[20px]"
                       src={
                         rasm?.logo_path
                           ? `https://image.tmdb.org/t/p/original${rasm?.logo_path}`

@@ -2,11 +2,12 @@ import { memo, useLayoutEffect, useState } from "react";
 import { useCast } from "../service/useCast";
 import { useNavigate, useParams } from "react-router-dom";
 import { IMG_LINK } from "../../../shared/static/imgUrl";
-import { Commet } from "react-loading-indicators";
+import {  ThreeDot } from "react-loading-indicators";
 import rasm from "../../../shared/assets/user.jpg";
 import { Undo2, ChevronRight, X } from "lucide-react";
-import PersonImage from "../components/personImages/PersonImage";
+
 import PersonMovie from "../components/personMovie/PersonMovie";
+import { CarouselDemo } from "../../../shared/components/ui/aceternityComponents/MovieCreditImage";
 
 const CastDetail = () => {
   useLayoutEffect(() => {
@@ -18,21 +19,18 @@ const CastDetail = () => {
   const { getPerson } = useCast();
 
   const { data, isFetching } = getPerson(Number(id));
+ 
 
   if (isFetching) {
     return (
-      <div className="flex items-center justify-center bg-[#000] min-h-[500px]">
-        <Commet
-          color="#ffffff"
-          size="large"
-          text="loading"
-          textColor="#ffffff"
-        />
+      <div className="flex items-center justify-center bg-[#000] min-h-[100vh]">
+      <ThreeDot color="#fff" size="medium" text="" textColor="" />
       </div>
     );
   }
   return (
     <section className="bg-[#000] pt-[60px] pb-[120px] min-h-[500px]">
+   
       <div className="container ">
         <div className="flex items-center justify-between gap-[40px] max-w-[80%] mx-auto max-[700px]:max-w-[100%] max-[640px]:flex-col">
           {data?.profile_path ? (
@@ -133,7 +131,6 @@ const CastDetail = () => {
                         </p>
                       )}
                     </div>
-                    <div></div>
                   </div>
                 </>
               ) : (
@@ -142,8 +139,9 @@ const CastDetail = () => {
             </div>
           </div>
         </div>
-        <PersonImage />
-        <PersonMovie/>
+
+        <CarouselDemo />
+        <PersonMovie />
       </div>
     </section>
   );
