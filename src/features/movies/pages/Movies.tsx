@@ -11,26 +11,17 @@ const Movies = () => {
   const { getMovies } = useMovie();
   const { getGenres } = useGenres();
 
-
-
   const [params, setParams] = useSearchParams();
 
   const page = params.get("page") || "1";
   const with_genres = params.get("genre") || "";
 
-
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [page]);
 
-
-
-  
-
-
   const { data: dataGenres } = getGenres();
-  const { data, isFetching } = getMovies({ page, with_genres,  });
+  const { data, isFetching } = getMovies({ page, with_genres });
 
   const selectOptions = dataGenres?.genres.map(({ id, name }: any) => ({
     value: id.toString(),
@@ -50,7 +41,6 @@ const Movies = () => {
   if (isFetching) {
     return (
       <div className="bg-[#000]  pt-[180px] pb-[120px]">
-       
         <MovieSkaleton />
       </div>
     );
@@ -59,11 +49,13 @@ const Movies = () => {
       <>
         <div className="pb-[60px] bg-[#000] scroll-smooth">
           <div className="container">
-            <div className="pt-[40px] w-[35%] mx-auto">
+            <div className="pt-[40px] w-[35%] mx-auto max-[700px]:w-[60%] max-[600px]:w-[100%]">
               <Select
+                placeholder={
+                  <span style={{ color: "#fff" }}>Select genre</span>
+                }
                 onChange={handleChangeGenre}
                 className="w-[100%] "
-                placeholder="Select genre"
                 options={selectOptions}
                 value={with_genres || undefined}
               />
