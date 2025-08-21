@@ -8,7 +8,7 @@ import { FaBookmark } from "react-icons/fa6";
 
 interface Props {
   data: any[] | undefined;
-  title? : string
+  title?: string;
 }
 const MovieViewOrnidary: FC<Props> = ({ data, title }) => {
   const navigate = useNavigate();
@@ -51,9 +51,12 @@ const MovieViewOrnidary: FC<Props> = ({ data, title }) => {
                   {movie.vote_average}
                   <MdOutlineStarOutline />
                 </p>
-                <button className="cursor-pointer" onClick={() => dispatch(toggleBookmark(movie))}>
+                <button
+                  className="cursor-pointer"
+                  onClick={() => dispatch(toggleBookmark(movie))}
+                >
                   {user?.some((item: any) => item.id == movie.id) ? (
-                    <FaBookmark className="text-[white] text-[20px] "/>
+                    <FaBookmark className="text-[white] text-[20px] " />
                   ) : (
                     <FaRegBookmark className="text-[white] text-[20px]" />
                   )}

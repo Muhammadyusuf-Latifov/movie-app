@@ -1,12 +1,14 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { api } from "../../../shared/api";
 interface iProps {
-  page?: number;
+  page?: string;
+  with_genres?: string
+  sort_by?: string
 }
 export const useMovie = () => {
   const getMovies = (params?: iProps) =>
     useQuery({
-      queryKey: ["movie-key", params?.page],
+      queryKey: ["movie-key", params],
       queryFn: () =>
         api
           .get("/discover/movie", {
