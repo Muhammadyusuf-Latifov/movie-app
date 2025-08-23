@@ -7,7 +7,7 @@ const Search = () => {
   console.log(data);
 
   return (
-    <section className="bg-[#000] pb-[80px]">
+    <section className="bg-[#000] pb-[80px] min-h-[700px]">
       <div className="pt-[50px]">
         <PlaceholdersAndVanishInputDemo />
         <MovieViewOrnidary
