@@ -1,8 +1,11 @@
-import { memo } from "react";
+import { memo, useLayoutEffect } from "react";
 import { PlaceholdersAndVanishInputDemo } from "../../../shared/components/ui/aceternityComponents/searchInput";
 import { useSelector } from "react-redux";
 import MovieViewOrnidary from "../../movies/components/movieImage/movieViewOrnidary";
 const Search = () => {
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const data = useSelector((state: any | undefined) => state.search.value);
   console.log(data);
 
