@@ -2,7 +2,7 @@
 
 const HeadSkaleton = () => {
   return (
-    <section className="bg-[#000]">
+    <section className="bg-[#000] min-h-[100vh]">
       <div
         className={`skaletion_animation rounded-[12px] max-w-[1300px] w-[100%] mx-auto h-[650px]`}
       ></div>

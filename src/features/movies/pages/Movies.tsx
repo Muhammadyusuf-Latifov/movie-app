@@ -37,10 +37,12 @@ const Movies = () => {
     params.set("genre", value);
     setParams(params);
   };
+console.log(data);
+
 
   if (isFetching) {
     return (
-      <div className="bg-[#000]  pt-[180px] pb-[120px]">
+      <div className="bg-[#000]  pt-[240px] pb-[120px]">
         <MovieSkaleton />
       </div>
     );
@@ -66,7 +68,7 @@ const Movies = () => {
         <div className="bg-[#000]  flex items-center justify-center pb-[40px]">
           <div className=" py-[10px] px-[30px] rounded-[12px]">
             <Pagination
-              total={data?.total_pages}
+              total={500}
               current={Number(page)}
               showSizeChanger={false}
               onChange={handleChange}

@@ -5,15 +5,51 @@ import { useNavigate } from "react-router-dom";
 import { FaRegBookmark } from "react-icons/fa6";
 import { toggleBookmark } from "../../../../app/redux/useBookmark";
 import { FaBookmark } from "react-icons/fa6";
-
+import noImage from "../../../../shared/assets/noImage.png";
+import { TbMovieOff } from "react-icons/tb";
+import { Button } from "antd";
+import { IMG_LINK } from "../../../../shared/static/imgUrl";
+import { SearchX } from "lucide-react";
 interface Props {
   data: any[] | undefined;
   title?: string;
+  desc?: string;
+  bool?: boolean;
 }
-const MovieViewOrnidary: FC<Props> = ({ data, title }) => {
+const MovieViewOrnidary: FC<Props> = ({ data, title, desc, bool }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.bookmark.value);
+  console.log(data);
+
+  if (data?.length === 0) {
+    return (
+      <section className="min-h-[100vh] flex  pt-[200px] justify-center bg-[#000]">
+        <div className="flex flex-col ">
+          {bool ? (
+            <SearchX className="text-[#858585] mx-auto w-[100px] h-[100px] mb-[20px]" />
+          ) : (
+            <TbMovieOff className="text-[#858585] mx-auto text-[90px] mb-[20px]" />
+          )}
+
+          <p className="text-[#858585] text-[24px]">
+            {desc ? desc : "Movies are unavailable or banned"}
+          </p>
+          {bool ? (
+            <></>
+          ) : (
+            <Button
+              onClick={() => navigate(-1)}
+              className="block mx-auto mt-[20px] "
+            >
+              Go Back
+            </Button>
+          )}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="bg-[#000] pt-[80px]">
       <div className="container">
@@ -25,8 +61,12 @@ const MovieViewOrnidary: FC<Props> = ({ data, title }) => {
             <div key={movie?.id} className="mb-[20px]">
               <div onClick={() => navigate(`/movie/${movie.id}`)}>
                 <img
-                  className="  min-h-[200px] rounded-[12px]"
-                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                  className="block h-[450px] w-full bg-[#393939]   rounded-[12px] object-cover max-[1000px]:h-[370px] max-[900px]:h-[300px]"
+                  src={
+                    movie?.poster_path
+                      ? `${IMG_LINK}${movie?.poster_path}`
+                      : noImage
+                  }
                   alt=""
                 />
               </div>
