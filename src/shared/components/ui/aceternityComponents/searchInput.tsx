@@ -5,6 +5,7 @@ import { PlaceholdersAndVanishInput } from "../imageHover/searchInput";
 import { useSearch } from "../../../../features/search/service/UseSearch";
 import { useDispatch } from "react-redux";
 import { element } from "../../../../app/redux/useSearch";
+import useDebounce from "../../../hooks/useDebunce";
 
 export const PlaceholdersAndVanishInputDemo = () => {
   const dispatch = useDispatch();
@@ -15,8 +16,9 @@ export const PlaceholdersAndVanishInputDemo = () => {
     "Find romantic comedies...",
     "Enter a movie or TV show...",
   ];
+  const debunce = useDebounce(value)
   const { getMovieBySearch } = useSearch();
-  const { data } = getMovieBySearch({ query: value });
+  const { data } = getMovieBySearch({ query: debunce });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const malumot = e.target.value;
