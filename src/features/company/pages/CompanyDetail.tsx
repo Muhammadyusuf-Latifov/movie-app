@@ -34,7 +34,7 @@ const Company = () => {
             <div className="border   w-[50%] max-[700px]:w-[80%] max-[600px]:w-[100%] max-[700px]:mb-[30px]">
               {data?.logo_path ? (
                 <img
-                  className="w-[100%] p-[20px] max-w-[90%] max-[700px]:max-w-[100%] bg-[#fff] rounded-[14px] h-[380px]"
+                  className="w-[100%] p-[20px] py-[70px] max-w-[90%] max-[700px]:max-w-[100%] bg-[#fff] rounded-[14px] h-[380px]"
                   src={`${IMG_LINK}${data?.logo_path}`}
                   alt=""
                 />

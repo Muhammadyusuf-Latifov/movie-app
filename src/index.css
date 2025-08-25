@@ -163,7 +163,7 @@
 }
 
 .skaletion_animation {
-  background: linear-gradient(90deg, #868686, #6d6c6c, #868686);
+  background: linear-gradient(90deg, #424242, #4e4e4e, #424242);
   background-size: 200%;
   animation: animation 1s linear infinite;
 }
@@ -196,6 +196,10 @@
     margin-bottom: 30px;
   }
 }
+.outlet {
+
+  padding: 3px 30px;
+}
 .outlet.active {
-  background: #fff;
+  border-bottom: 2px solid #a00000;
 }

@@ -43,7 +43,7 @@ const MovieDetail = () => {
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${data?.backdrop_path})`,
               }}
-              className="bg-center overflow-hidden relative bg-cover h-[640px] border-[1.5px] rounded-[12px]  "
+              className="bg-center bg-[#222] overflow-hidden relative bg-cover h-[640px] border-[1.5px] rounded-[12px]  "
             >
               <button
                 onClick={() => navigate(-1)}
@@ -163,9 +163,13 @@ const MovieDetail = () => {
                 </div>
               </section>
             ) : (
-              <div className="bg-[#ddd] grid grid-cols-4 gap-[10px] p-[20px] mt-[30px] rounded-[12px]">
+              <div className="bg-[#ddd] grid grid-cols-4 gap-[10px] p-[20px] mt-[30px] rounded-[12px] max-[800px]:grid-cols-3 max-[580px]:grid-cols-2">
                 {data?.production_companies.map((rasm: Rasm) => (
-                  <div className="cursor-pointer" onClick={() => navigate(`/company/${rasm?.id}`)} key={rasm?.id}>
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => navigate(`/company/${rasm?.id}`)}
+                    key={rasm?.id}
+                  >
                     <img
                       className="block w-[100%] duration-200 h-[150px] border-[1.5px] hover:shadow-lg rounded-[12px] border-[#bab9b9] p-[20px]"
                       src={
@@ -175,7 +179,7 @@ const MovieDetail = () => {
                       }
                       alt=""
                     />
-                    <h2 className="text-center text-[#787777] text-[20px] mt-[12px] mb-[10px]">
+                    <h2 className="text-center text-[#787777] text-[20px] mt-[12px] mb-[10px] max-[800px]:text-[15px] max-[800px]:mb-[2px] max-[800px]:mt-[3px]">
                       {rasm?.name}
                     </h2>
                   </div>

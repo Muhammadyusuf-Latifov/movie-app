@@ -1,42 +1,27 @@
-import { memo } from "react";
-import { NavLink } from "react-router-dom";
+import { memo } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const MovieHeader = () => {
   return (
-    <div className="MovieHeader container">
-      <ul className="flex items-center justify-around gap-[10px]">
+    <div className="container">
+      <ul className="text-[#fff] flex items-center">
         <li>
-          <NavLink
-            end={true}
-            to={""}
-            className={
-              "outlet block w-[120px] text-center bg-[#c4c4c4] font-medium text-[18px] text-[#d00000] rounded-[12px] py-[14px] "
-            }
-          >
-            <span className="">Comments</span>
+          <NavLink className={"outlet"} end={true} to={""}>
+            <span>Comments</span>
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to={"credits"}
-            className={
-              "outlet block w-[120px] text-center  font-medium bg-[#c4c4c4] text-[18px] text-[#d00000] rounded-[12px] py-[14px]"
-            }
-          >
-            <span className=" ">Actors</span>
+          <NavLink className={"outlet"} to={"credits"}>
+            <span>Actors</span>
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to={"images"}
-            className={
-              "outlet block w-[120px] text-center font-medium bg-[#c4c4c4] text-[18px] text-[#d00000] rounded-[12px] py-[14px] "
-            }
-          >
-            <span className=" ">Images</span>
+          <NavLink className={"outlet"} to={"images"}>
+            <span>Images</span>
           </NavLink>
         </li>
       </ul>
+      <hr className='bg-[#8b8b8b] h-[2px]'/>
     </div>
   );
 };

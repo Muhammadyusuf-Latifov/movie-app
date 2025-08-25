@@ -11,5 +11,11 @@ export const useSearch = () => {
       queryFn: () =>
         api.get("/search/movie", { params }).then((res) => res.data),
     });
-  return { getMovieBySearch };
+  const getCompanyBySearch = (params: iParams) =>
+    useQuery({
+      queryKey: ["company-key", params],
+      queryFn: () =>
+        api.get("/search/company", { params }).then((res) => res.data),
+    });
+  return { getMovieBySearch, getCompanyBySearch };
 };

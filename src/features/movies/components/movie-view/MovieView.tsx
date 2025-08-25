@@ -1,7 +1,7 @@
 import { memo, type FC } from "react";
 import { MdLanguage, MdOutlineStarOutline } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
-import poster from "../../../../shared/assets/noImage.png";
+import poster from "../../../../shared/assets/No-Image-Placeholder.svg.png";
 // @ts-ignore
 import "swiper/css";
 // @ts-ignore
@@ -56,7 +56,7 @@ const MovieView: FC<Props> = ({ data, title }) => {
                     className="h-[430px] overflow-hidden border rounded-[12px]  max-[1000px]:h-[400px]  max-[700px]:h-[380px]  max-[600px]:h-[320px]"
                   >
                     <img
-                      className=" h-[100%] w-[100%] "
+                      className=" h-[100%] w-[100%] bg-[#3f3f3f]"
                       src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
                       alt=""
                     />
@@ -67,7 +67,7 @@ const MovieView: FC<Props> = ({ data, title }) => {
                     className="relative bg-[#6e6e6e]   h-[430px] overflow-hidden border rounded-[12px] border-[#5e5e5e] max-[1000px]:h-[400px] max-[700px]:h-[380px] max-[600px]:h-[320px]"
                   >
                     <img
-                      className="absolute top-[50%]  p-[20px] left-[50%] -translate-x-1/2  -translate-y-1/2"
+                      className="absolute top-[50%]   p-[20px] left-[50%] -translate-x-1/2  -translate-y-1/2"
                       src={poster}
                       alt=""
                     />

@@ -19,8 +19,9 @@ const Bookmark = () => {
     );
   }
   return (
-    <section>
-      <MovieViewOrnidary data={user} title={"Bookmark"} />
+    <section className="bg-[#000]">
+     
+      <MovieViewOrnidary data={user} title="Bookmark" />
     </section>
   );
 };

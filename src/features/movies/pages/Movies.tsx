@@ -6,6 +6,7 @@ import MovieSkaleton from "../components/movie-view/MovieSkaleton";
 import { Pagination, Select } from "antd";
 import { useSearchParams } from "react-router-dom";
 import { useGenres } from "../service/useGenre";
+import { Film } from "lucide-react";
 
 const Movies = () => {
   const { getMovies } = useMovie();
@@ -27,6 +28,8 @@ const Movies = () => {
     value: id.toString(),
     label: name,
   }));
+  
+  
 
   const handleChange = (value: number) => {
     params.set("page", value.toString());
@@ -37,14 +40,15 @@ const Movies = () => {
     params.set("genre", value);
     setParams(params);
   };
-console.log(data);
-
+  
 
   if (isFetching) {
     return (
-      <div className="bg-[#000]  pt-[240px] pb-[120px]">
-        <MovieSkaleton />
-      </div>
+      <>
+        <div className="bg-[#000]  pt-[240px] pb-[120px]">
+          <MovieSkaleton />
+        </div>
+      </>
     );
   } else {
     return (
@@ -63,7 +67,18 @@ console.log(data);
               />
             </div>
           </div>
-          <MovieViewOrnidary data={data?.results} title={"Movies"} />
+          {data?.results.length === 0 ? (
+            <div className="container">
+              <div className="text-[#4c4c4c] pt-[200px] pb-[200px] ">
+                <Film className="mx-auto w-[80px] h-[80px]" />
+                <p className="text-[24px] text-center">
+                  Movies are unavailable or banned
+                </p>
+              </div>
+            </div>
+          ) : (
+            <MovieViewOrnidary data={data?.results} title={"Movies"} />
+          )}
         </div>
         <div className="bg-[#000]  flex items-center justify-center pb-[40px]">
           <div className=" py-[10px] px-[30px] rounded-[12px]">
