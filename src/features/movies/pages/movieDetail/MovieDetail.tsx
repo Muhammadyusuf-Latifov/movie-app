@@ -78,7 +78,7 @@ const MovieDetail = () => {
                   </div>
                   <div className="flex items-center justify-center mt-[20px]">
                     <button
-                      onClick={() => navigate("/tickets")}
+                    
                       className="max-w-[300px] flex items-center justify-center gap-[10px] duration-200 hover:bg-[red] w-[100%] py-[10px] bg-[#C61F1F] text-[#ffff] rounded-[12px]"
                     >
                       <Tickets />
@@ -148,6 +148,7 @@ const MovieDetail = () => {
                 </div>
               </div>
             </div>
+           
             <section className=" mt-[100px] mb-[150px]">
               <MovieHeader />
               <Outlet />

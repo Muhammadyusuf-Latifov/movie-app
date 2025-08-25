@@ -3,6 +3,7 @@ import { useRoutes } from "react-router-dom";
 import Logo from "../shared/components/ui/logo/logo";
 
 
+
 const MainLayout = lazy(() => import("../layout/MainLayout"));
 const Home = lazy(() => import("../features/home/pages/Home"));
 const Bookmark = lazy(() => import("../features/bookmark/pages/Bookmark"));
@@ -24,6 +25,7 @@ const MovieComments = lazy(
 const CastDetail = lazy(() => import("../features/cast/pages/CastDetail"));
 const Search = lazy(() => import("../features/search/pages/Search"));
 const CompanyDetail = lazy(() => import("../features/company/pages/CompanyDetail"));
+const NotFound = lazy(() => import("../features/notFound/notFound"));
 
 
 const AppRoutes = () => {
@@ -66,6 +68,10 @@ const AppRoutes = () => {
             },
           ],
         },
+        {
+          path: "*",
+          element: <NotFound/>
+        }
       ])}
     </Suspense>
   );

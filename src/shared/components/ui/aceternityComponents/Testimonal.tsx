@@ -12,7 +12,7 @@ interface info {
   content: string;
 }
 export const AnimatedTestimonialsDemo: FC<iProps> = ({ data }) => {
-  console.log(data);
+  
 
   const malumot =
     data?.map((item: info) => ({
@@ -28,7 +28,7 @@ export const AnimatedTestimonialsDemo: FC<iProps> = ({ data }) => {
         ? `${IMG_LINK}${item?.author_details?.avatar_path}`
         : user,
     })) || [];
-  console.log(malumot);
+  
 
   const testimonials = malumot;
   return <AnimatedTestimonials testimonials={testimonials} />;
