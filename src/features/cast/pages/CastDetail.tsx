@@ -1,10 +1,10 @@
-import { memo, useLayoutEffect, useState } from "react";
+import { memo, useLayoutEffect } from "react";
 import { useCast } from "../service/useCast";
 import { useNavigate, useParams } from "react-router-dom";
 import { IMG_LINK } from "../../../shared/static/imgUrl";
 import { ThreeDot } from "react-loading-indicators";
 import rasm from "../../../shared/assets/user.jpg";
-import { Undo2, ChevronRight, X } from "lucide-react";
+import { Undo2 } from "lucide-react";
 
 import PersonMovie from "../components/personMovie/PersonMovie";
 import { CarouselDemo } from "../../../shared/components/ui/aceternityComponents/MovieCreditImage";
@@ -13,7 +13,7 @@ const CastDetail = () => {
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  
+
   const { id } = useParams();
   const navigate = useNavigate();
   const { getPerson } = useCast();
